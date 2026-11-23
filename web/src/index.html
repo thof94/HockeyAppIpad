@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102237">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Hockey Tactics Board</title>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main id="app">
+    <header>
+      <h1 id="title">Hockey Tactics Board</h1>
+      <div class="header-controls">
+        <select id="zone" aria-label="Baneutsnitt">
+          <option value="full">Hele banen</option><option value="left">Venstre sone</option>
+          <option value="right">Høyre sone</option><option value="half">Halvbane</option>
+        </select>
+        <button id="reset">Tilbakestill visning</button><button id="panel-toggle" aria-expanded="true" aria-controls="panel">Spillere</button>
+        <button id="library">Bibliotek</button><button id="save">Lagre</button><button id="export">Eksporter</button>
+      </div>
+    </header>
+    <div id="work">
+      <section id="board"><canvas id="rink" aria-label="Taktikktavle for ishockey"></canvas></section>
+      <aside id="panel">
+        <h2>Spillere</h2>
+        <div id="selection-action"></div>
+        <div class="player-tools">
+          <div id="teams"><button data-team="blue">Blå</button><button data-team="red">Rød</button></div>
+          <div id="positions"></div>
+          <div class="row"><button id="custom-player">+ Navn/nr.</button><button id="puck">Puck</button></div>
+          <div id="selection-detail"></div>
+        </div>
+      </aside>
+    </div>
+    <div class="toolbar">
+      <div id="tools" aria-label="Tegneverktøy"></div>
+      <div class="row toolbar-actions">
+        <button id="ink">Farge</button><button id="width">Tykkelse</button>
+        <button id="undo" aria-label="Angre">↶ Angre</button><button id="redo" aria-label="Gjenta">↷ Gjenta</button><button id="clear">Tøm</button>
+      </div>
+    </div>
+    <footer><span id="offline" role="status">Klargjør frakoblet bruk …</span><button id="update" hidden>Oppdater appen</button></footer>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <h2 id="dialog-title"></h2>
+    <div id="dialog-body"></div>
+    <div id="dialog-actions" class="row"></div>
+  </dialog>
+  <input type="file" id="import" accept=".json,application/json" hidden>
+  <p id="notice" role="status" hidden></p>
+  <noscript>Taktikktavlen trenger JavaScript for å fungere.</noscript>
+</body>
+</html>
